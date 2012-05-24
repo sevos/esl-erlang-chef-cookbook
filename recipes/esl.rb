@@ -17,16 +17,15 @@
 # limitations under the License.
 #
 
-
-def codename
-  if (distribution = node['lsb']['codename']) == 'precise'
-    'oneiric'
-  else
-    distribution
-  end
-end
-
 apt_repository "erlangsolutions" do
+  def codename
+    if (distribution = node['lsb']['codename']) == 'precise'
+      'oneiric'
+    else
+      distribution
+    end
+  end
+
   uri          "http://binaries.erlang-solutions.com/debian"
   distribution codename
   components   ["contrib"]
